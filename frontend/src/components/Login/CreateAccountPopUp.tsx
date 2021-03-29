@@ -76,7 +76,7 @@ const CreateAccountPopUp: React.FunctionComponent = () => {
   return <>
 
 
-    <Button data-testid='createMenuButton' style={{float: 'right'}} onClick={openCreateMenu}>Create Account </Button>
+    <Button data-testid='createMenuButton' style={{float: 'right', marginLeft: '10px', marginRight: '5px'}} onClick={openCreateMenu}>Create Account </Button>
     <Modal isOpen={isOpen} onClose={closeCreateMenu}>
       <ModalOverlay/>
       <ModalContent>

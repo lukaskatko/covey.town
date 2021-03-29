@@ -73,7 +73,7 @@ const LoginPopUp: React.FunctionComponent = () => {
 
   return <>
 
-<Button data-testid='loginMenuButton' style={{float: 'right'}} onClick={openLoginMenu}>Login </Button>
+<Button data-testid='loginMenuButton' style={{float: 'right', marginLeft: '20px'}} onClick={openLoginMenu}>Login </Button>
     <Modal isOpen={isOpen} onClose={closeLoginMenu}>
       <ModalOverlay/>
       <ModalContent>
@@ -105,6 +105,5 @@ const LoginPopUp: React.FunctionComponent = () => {
 
   </>
 }
-
 
 export default LoginPopUp;

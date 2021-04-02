@@ -23,8 +23,8 @@ import useMaybeVideo from '../../hooks/useMaybeVideo';
 
 const LoginPopUp: React.FunctionComponent = () => {
   const {isOpen, onOpen, onClose} = useDisclosure()
-  const {apiClient, currentTownID, currentTownFriendlyName, currentTownIsPubliclyListed} = useCoveyAppState();
 
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [loginUserName, setLoginUserName] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
 

@@ -16,8 +16,6 @@ import {
   useDisclosure,
   useToast
 } from '@chakra-ui/react';
-import MenuItem from '@material-ui/core/MenuItem';
-import Typography from '@material-ui/core/Typography';
 import useCoveyAppState from '../../hooks/useCoveyAppState';
 import useMaybeVideo from '../../hooks/useMaybeVideo';
 

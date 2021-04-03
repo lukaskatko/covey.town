@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+
 
 import {
   Button,
-  Checkbox,
   FormControl,
   FormLabel,
   Input,
@@ -16,35 +16,23 @@ import {
   useDisclosure,
   useToast
 } from '@chakra-ui/react';
-import useCoveyAppState from '../../hooks/useCoveyAppState';
-import useMaybeVideo from '../../hooks/useMaybeVideo';
+
+import { IUserAccount } from '../../classes/UserAccount';
+import { addUser } from '../../classes/api';
 
 const CreateAccountPopUp: React.FunctionComponent = () => {
-  const {isOpen, onOpen, onClose} = useDisclosure()
-  const video = useMaybeVideo()
-  const {apiClient, currentTownID, currentTownFriendlyName, currentTownIsPubliclyListed} = useCoveyAppState();
 
-
-  const [newLoginUserName, setNewLoginUserName] = useState<string>('');
-  const [newUserPassword, setNewUserPassword] = useState<string>('');
-
-  const [modal, setModal] = useState(false);
-
-
-  const toast = useToast()
-
-
-  const openCreateMenu = async ()=>{
-    onOpen();
-  };
-
-  const closeCreateMenu = async ()=>{
-    onClose();
-  };
-
+    const {isOpen, onOpen, onClose} = useDisclosure()
+    const [newLoginUserName, setNewLoginUserName] = useState<string>('');
+    const [newUserPassword, setNewUserPassword] = useState<string>('');
+    const toast = useToast()
   
+    const openCreateMenu = async ()=>{ onOpen(); };
+  
+    const closeCreateMenu = async ()=>{ onClose();  };
+
     const createNewUserAccount = async () =>{
-      try {
+
       if(newLoginUserName.length === 0){
           toast({
             title: 'Unable to create new account',
@@ -62,14 +50,28 @@ const CreateAccountPopUp: React.FunctionComponent = () => {
         });
         return;
         }
+
+      try {
+        const newUser = {
+          username: newLoginUserName,
+          password: newUserPassword,
+        }
+
+        addUser(newUser);
+        toast({
+          title: 'User created',
+          description: 'You can log in now!',
+          status: 'success'
+        })
+        console.log("added user successfully");
       } catch (err) {
         toast({
           title: 'Unable to create account with entered info',
           description: err.toString(),
           status: 'error'
         })
-      }
-  };
+    }
+  }
 
   return <>
 
@@ -80,7 +82,7 @@ const CreateAccountPopUp: React.FunctionComponent = () => {
       <ModalContent>
         <ModalHeader>Create Account</ModalHeader>
         <ModalCloseButton/>
-        <form onSubmit={(ev)=>{ev.preventDefault(); createNewUserAccount()}}>
+        <form onSubmit={(ev)=>{ev.preventDefault()}}>
           <ModalBody pb={6}>
             <FormControl isRequired>
               <FormLabel htmlFor='newAccountUsername'>Enter a new username</FormLabel>
@@ -94,7 +96,7 @@ const CreateAccountPopUp: React.FunctionComponent = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button data-testid='createbutton' colorScheme="blue" mr={3} value="delete" name='create' onClick={()=>createNewUserAccount()}>
+            <Button data-testid='createbutton' onClick={()=> {createNewUserAccount(); closeCreateMenu() }} colorScheme="blue" mr={3} value="delete" name='create' >
               Create
             </Button>
             <Button onClick={closeCreateMenu}>Cancel</Button>
@@ -108,3 +110,5 @@ const CreateAccountPopUp: React.FunctionComponent = () => {
 
 
 export default CreateAccountPopUp;
+
+

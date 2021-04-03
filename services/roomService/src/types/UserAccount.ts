@@ -1,21 +1,8 @@
-import { Document, model, Schema } from "mongoose"
+import { Document } from "mongoose"
 
-export interface UserAccount extends Document {
-  userName: string
+export interface IUserAccount extends Document {
+  username: string
   password: string
+  avatar: string
 }
 
-const userAccountSchema: Schema = new Schema(
-  {
-    username: {
-      type: String,
-      required: true,
-    },
-    password: {
-      type: String, 
-      required: true,
-    },
-  }
-)
-
-export default model<UserAccount>("UserAccountItem", userAccountSchema)

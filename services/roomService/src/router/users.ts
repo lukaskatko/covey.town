@@ -1,16 +1,15 @@
-import { Express } from 'express';
-import { addUsers, deleteUser, getUser, getUsers, updateUsers } from './UserAccountIndex';
+import {Router} from "express"
+import { fromPairs } from "ramda"
+import {addUsers, deleteUser, getUsers, updateUsers} from "./UserAccountIndex"
 
-const users = (app: Express): void => {
-  app.get('/accounts', getUsers);
+const router: Router = Router()
 
-  app.post('/account', getUser);
+router.get("accounts", getUsers)
 
-  app.post('/add-user', addUsers);
+router.post("/add-user", addUsers)
 
-  app.put('/edit-user/:id', updateUsers);
+router.put("/edit-user/:id", updateUsers)
 
-  app.delete('/delete-user/:id', deleteUser);
-};
+router.delete("/delete-user/:id", deleteUser)
 
-export default users;
+export default router

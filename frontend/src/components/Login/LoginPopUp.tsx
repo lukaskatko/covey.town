@@ -79,6 +79,7 @@ const LoginPopUp: React.FunctionComponent = () => {
       if (user) {
         resetValues();
         closeLoginMenu();
+        console.log(user);
       } else {
         setErrorMessage(response.data.message || '');
       }
@@ -122,16 +123,6 @@ const LoginPopUp: React.FunctionComponent = () => {
               loginUserAccount();
             }}>
             <ModalBody pb={6}>
-              <FormControl isRequired>
-                <FormLabel htmlFor='loginAccount'>Enter your avatar</FormLabel>
-                <Input
-                  id='loginAvatar'
-                  placeholder='Enter avatar'
-                  name='loginAvatar'
-                  value={loginAvatar}
-                  onChange={ev => setLoginAvatar(ev.target.value)}
-                />
-              </FormControl>
               <FormControl isRequired>
                 <FormLabel htmlFor='loginAccount'>Enter your username</FormLabel>
                 <Input

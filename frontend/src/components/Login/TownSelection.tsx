@@ -97,7 +97,7 @@ export default function TownSelection({ doLogin }: TownSelectionProps): JSX.Elem
         status: 'error',
       });
     }
-  }, [currentPublicTowns, doLogin, userName, connect, toast]);
+  }, [currentPublicTowns, doLogin, userName, connect, toast, avatarID]);
 
   const handleJoin = useCallback(
     async (coveyRoomID: string) => {
@@ -133,7 +133,7 @@ export default function TownSelection({ doLogin }: TownSelectionProps): JSX.Elem
         });
       }
     },
-    [doLogin, userName, connect, toast],
+    [doLogin, userName, connect, toast, avatarID],
   );
 
   const handleCreate = async () => {

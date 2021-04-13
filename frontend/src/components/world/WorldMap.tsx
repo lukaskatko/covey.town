@@ -106,7 +106,7 @@ class CoveyGameScene extends Phaser.Scene {
           .sprite(0, 0, `${myPlayer.avatarID}`, `${ myPlayer.avatarID }-front`)
           .setSize(30, 40)
           .setOffset(0, 24);
-        const label = this.add.text(0, 0, `${myPlayer.userName} (${myPlayer.avatarID})`, {
+        const label = this.add.text(0, 0, `${myPlayer.userName}`, {
           // CHANGE
           font: '18px monospace',
           color: '#000000',
@@ -306,7 +306,7 @@ class CoveyGameScene extends Phaser.Scene {
       .sprite(spawnPoint.x, spawnPoint.y, `${this.video.avatarID}`, `${this.video.avatarID}-front`)
       .setSize(30, 40)
       .setOffset(0, 24);
-    const label = this.add.text(spawnPoint.x, spawnPoint.y - 20, `(You) (${this.video.avatarID})`, {
+    const label = this.add.text(spawnPoint.x, spawnPoint.y - 20, `(You)`, {
       // CHANGE
       font: '18px monospace',
       color: '#000000',

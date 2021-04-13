@@ -14,9 +14,7 @@ export default class Player {
   /** The player's username, which is not guaranteed to be unique within the town * */
   private readonly _userName: string;
 
-  private readonly _avatarID: string;
-
-  constructor(userName: string, avatarID?: string) {
+  constructor(userName: string) {
     this.location = {
       x: 0,
       y: 0,
@@ -24,16 +22,11 @@ export default class Player {
       rotation: 'front',
     };
     this._userName = userName;
-    this._avatarID = avatarID || 'misa';
     this._id = nanoid();
   }
 
   get userName(): string {
     return this._userName;
-  }
-
-  get avatarID(): string {
-    return this._avatarID;
   }
 
   get id(): string {

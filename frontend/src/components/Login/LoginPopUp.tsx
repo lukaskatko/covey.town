@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-
 import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Button,
+  CloseButton,
   FormControl,
   FormLabel,
   Input,
@@ -13,50 +15,40 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-  useToast
+  useToast,
 } from '@chakra-ui/react';
-import { IUserAccount } from '../../classes/UserAccount';
+import React, { useState } from 'react';
 import { getUser } from '../../classes/api';
+import { IUserAccount } from '../../classes/UserAccount';
 
 const LoginPopUp: React.FunctionComponent = () => {
-  const {isOpen, onOpen, onClose} = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
   const [loginUserName, setLoginUserName] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
-  const[userList, setUserList] = useState<IUserAccount[]>([]);
-
+  const [loginAvatar, setLoginAvatar] = useState<string>('');
+  const [error, setErrorMessage] = useState<string | null>(null);
+  const [userList, setUserList] = useState<IUserAccount[]>([]);
 
   const [modal, setModal] = useState(false);
-  const toast = useToast()
-
-
+  const toast = useToast();
 
   // useEffect(() => {
   //   fetchAccount()
   // }, []);
 
-
-
-  const openLoginMenu = async ()=>{
+  const openLoginMenu = async () => {
     onOpen();
   };
 
-  const closeLoginMenu = async ()=>{
+  const closeLoginMenu = async () => {
     onClose();
   };
 
-  const fetchAccount = (): void => {
-    getUser()
-    .then(({ data: { accounts } }: IUserAccount[] | any) => setLoginUserName(accounts))
-    .catch((err: Error) => console.log(err))
-  }
-
-  const accountList = fetchAccount();
-
-  const loginUserAccount = async () =>{
+  const loginUserAccount = async () => {
     try {
-    if(loginUserAccount.length === 0){
+      if (loginUserName.length === 0) {
         toast({
           title: 'Unable to login',
           description: 'Please enter a username ',
@@ -64,59 +56,123 @@ const LoginPopUp: React.FunctionComponent = () => {
         });
         return;
       }
-    
-    if (userPassword.length === 0) {
-      toast({
-        title: 'Unable to login',
-        description: 'Please enter a password ',
-        status: 'error',
-      });
-      return;
+
+      if (userPassword.length === 0) {
+        toast({
+          title: 'Unable to login',
+          description: 'Please enter a password ',
+          status: 'error',
+        });
+        return;
       }
-
-
+      const resetValues = () => {
+        setLoginAvatar('');
+        setLoginUserName('');
+        setUserPassword('');
+      };
+      const response = await getUser({
+        username: loginUserName,
+        password: userPassword,
+        avatar: loginAvatar,
+      });
+      const { user } = response.data;
+      if (user) {
+        resetValues();
+        closeLoginMenu();
+      } else {
+        setErrorMessage(response.data.message || '');
+      }
     } catch (err) {
       toast({
         title: 'Unable to login with account',
         description: err.toString(),
-        status: 'error'
-      })
+        status: 'error',
+      });
     }
   };
 
-  return <>
+  return (
+    <>
+      <Button
+        data-testid='loginMenuButton'
+        style={{ float: 'right', marginLeft: '20px' }}
+        onClick={openLoginMenu}>
+        Login{' '}
+      </Button>
+      <Modal isOpen={isOpen} onClose={closeLoginMenu}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Log In</ModalHeader>
+          <ModalCloseButton />
+          {error && (
+            <Alert
+              status='error'
+              flexDirection='column'
+              alignItems='center'
+              justifyContent='center'
+              textAlign='center'>
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+              <CloseButton position='absolute' right='8px' top='8px' />
+            </Alert>
+          )}
+          <form
+            onSubmit={ev => {
+              ev.preventDefault();
+              loginUserAccount();
+            }}>
+            <ModalBody pb={6}>
+              <FormControl isRequired>
+                <FormLabel htmlFor='loginAccount'>Enter your avatar</FormLabel>
+                <Input
+                  id='loginAvatar'
+                  placeholder='Enter avatar'
+                  name='loginAvatar'
+                  value={loginAvatar}
+                  onChange={ev => setLoginAvatar(ev.target.value)}
+                />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel htmlFor='loginAccount'>Enter your username</FormLabel>
+                <Input
+                  id='loginAccount'
+                  placeholder='Enter Username'
+                  name='loginAccount'
+                  value={loginUserName}
+                  onChange={ev => setLoginUserName(ev.target.value)}
+                />
+              </FormControl>
 
-<Button data-testid='loginMenuButton' style={{float: 'right', marginLeft: '20px'}} onClick={openLoginMenu}>Login </Button>
-    <Modal isOpen={isOpen} onClose={closeLoginMenu}>
-      <ModalOverlay/>
-      <ModalContent>
-        <ModalHeader>Log In</ModalHeader>
-        <ModalCloseButton/>
-        <form onSubmit={(ev)=>{ev.preventDefault(); loginUserAccount()}}>
-          <ModalBody pb={6}>
-            <FormControl isRequired>
-              <FormLabel htmlFor='loginAccount'>Enter your username</FormLabel>
-              <Input id='loginAccount' placeholder="Enter Username" name="loginAccount" value={loginUserName} onChange={(ev)=>setLoginUserName(ev.target.value)} />
-            </FormControl>
+              <FormControl isRequired>
+                <FormLabel htmlFor='loginPassword'>Enter your password</FormLabel>
+                <Input
+                  id='loginPassword'
+                  placeholder='Enter Password'
+                  name='loginPassword'
+                  type='password'
+                  value={userPassword}
+                  onChange={ev => setUserPassword(ev.target.value)}
+                />
+              </FormControl>
+            </ModalBody>
 
-            <FormControl isRequired>
-              <FormLabel htmlFor='loginPassword'>Enter your password</FormLabel>
-              <Input id='loginPassword' placeholder="Enter Password" name="loginPassword" type="password" value={userPassword} onChange={(ev)=>setUserPassword(ev.target.value)} />
-            </FormControl>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button data-testid='loginbutton' colorScheme="blue" mr={3} value="login" name='action1' onClick={()=>loginUserAccount()}>
-              Log In
-            </Button>
-            <Button onClick={closeLoginMenu}>Cancel</Button>
-          </ModalFooter>
-        </form>
-      </ModalContent>
-    </Modal>
-
-
-  </>
-}
+            <ModalFooter>
+              <Button
+                data-testid='loginbutton'
+                colorScheme='blue'
+                mr={3}
+                value='login'
+                name='action1'
+                onClick={() => loginUserAccount()}>
+                Log In
+              </Button>
+              <Button onClick={closeLoginMenu}>Cancel</Button>
+            </ModalFooter>
+          </form>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};
 
 export default LoginPopUp;

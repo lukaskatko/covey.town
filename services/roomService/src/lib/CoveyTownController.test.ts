@@ -50,7 +50,7 @@ describe('CoveyTownController', () => {
       });
   });
   describe('added Player has an avatar ID', () => { // Included in handout
-    it('should use the coveyTownID and player ID properties when requesting a video token',
+    it('added player should have an avatar ID',
       async () => {
         const townName = `FriendlyNameTest-${nanoid()}`;
         const townController = new CoveyTownController(townName, false);
@@ -59,7 +59,7 @@ describe('CoveyTownController', () => {
       });
   });
   describe('added Player avatar defaults to misa', () => { // Included in handout
-    it('should use the coveyTownID and player ID properties when requesting a video token',
+    it('added player with no avatar shoulde default to misa',
       async () => {
         const townName = `FriendlyNameTest-${nanoid()}`;
         const townController = new CoveyTownController(townName, false);

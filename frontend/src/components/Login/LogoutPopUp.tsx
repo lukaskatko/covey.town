@@ -12,6 +12,8 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import useUserProfile from '../../hooks/useUserProfile';
+import { updateUser } from '../../classes/api';
+import { UserProfile } from '../../CoveyTypes';
 
 const LogoutPopUp: React.FunctionComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

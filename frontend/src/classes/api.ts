@@ -54,19 +54,17 @@ export const addUser = async (
   }
 };
 
-export const updateUser = async (account: IUserAccountLogin): Promise<AxiosResponse<ApiDataType>> => {
+export const updateUser = async (account: IUserAccountLogin | null,): Promise<AxiosResponse<ApiDataType>> => {
   try {
     // and change account to type IUserAccountLogin
     // const userUpdate: Pick<IUserAccountLogin, 'username' | 'avatar'> = {
     //   username: account.username,
     //   avatar: account.avatar
     // };
-    const userUpdate: Pick<IUserAccountLogin, 'userID'> = {
-      userID: account.userID,
-    };
+
     const updatedTodo: AxiosResponse<ApiDataType> = await axios.put(
-      `${baseUrl}/edit-user/${userID}`,
-      userUpdate,
+      `${baseUrl}/edit-user/${account?.userID}`,
+      account,
     );
     return updatedTodo;
   } catch (error) {

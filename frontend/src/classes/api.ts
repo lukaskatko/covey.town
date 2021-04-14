@@ -56,11 +56,6 @@ export const addUser = async (
 
 export const updateUser = async (account: IUserAccountAuthStatus | null,): Promise<AxiosResponse<ApiDataType>> => {
   try {
-    // and change account to type IUserAccountLogin
-    // const userUpdate: Pick<IUserAccountLogin, 'username' | 'avatar'> = {
-    //   username: account.username,
-    //   avatar: account.avatar
-    // };
 
     const updatedTodo: AxiosResponse<ApiDataType> = await axios.put(
       `${baseUrl}/edit-user/${account?.userID}`,

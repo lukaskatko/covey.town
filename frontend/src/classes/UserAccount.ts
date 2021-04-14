@@ -1,5 +1,6 @@
 export interface IUserAccountAuthStatus extends IUserAccountLogin {
   isLoggedIn: boolean;
+  userID: string; 
 }
 export interface IUserAccount {
   username: string;
@@ -10,7 +11,7 @@ export interface IUserAccount {
 
 export interface IUserAccountLogin extends IUserAccount {
   avatar: string;
-  userID: string; 
+
 }
 
 export interface UserAccountProps {
@@ -22,7 +23,7 @@ export interface IApiResponseWithMessage {
 }
 
 export interface IApiLoginDataType extends IApiResponseWithMessage {
-  user: IUserAccountLogin | null;
+  user: IUserAccountAuthStatus | null;
 }
 
 export interface IApiRegisterDataType extends IApiResponseWithMessage {

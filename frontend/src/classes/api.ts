@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
-import { IUserAccountLogin } from './UserAccount';
 import {
   ApiDataType,
   IApiLoginDataType,
   IApiRegisterDataType,
+  IUserAccountAuthStatus,
   IUserAccount,
   IUserAccountLogin,
 } from './UserAccount';
@@ -54,7 +54,7 @@ export const addUser = async (
   }
 };
 
-export const updateUser = async (account: IUserAccountLogin | null,): Promise<AxiosResponse<ApiDataType>> => {
+export const updateUser = async (account: IUserAccountAuthStatus | null,): Promise<AxiosResponse<ApiDataType>> => {
   try {
     // and change account to type IUserAccountLogin
     // const userUpdate: Pick<IUserAccountLogin, 'username' | 'avatar'> = {

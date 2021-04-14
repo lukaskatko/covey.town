@@ -10,6 +10,7 @@ export interface IUserAccount {
 
 export interface IUserAccountLogin extends IUserAccount {
   avatar: string;
+  userID: string; 
 }
 
 export interface UserAccountProps {

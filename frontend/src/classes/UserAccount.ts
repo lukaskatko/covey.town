@@ -4,7 +4,7 @@ export interface IUserAccountAuthStatus extends IUserAccountLogin {
 }
 export interface IUserAccount {
   username: string;
-  password: string;
+  password?: string;
   createdAt?: string;
   updatedAt?: string;
 }

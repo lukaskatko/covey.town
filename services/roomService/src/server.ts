@@ -14,9 +14,7 @@ app.use(Express.urlencoded({ extended: true }));
 
 users(app);
 
-const uri = `mongodb+srv://${process.env.MONGO_USER}:${encodeURIComponent(
-  process.env.MONGO_PASSWORD || '',
-)}@coveytownusers.w8gis.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+const uri = `${process.env.MONGO_DB_URI}`
 
 const options = { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false };
 

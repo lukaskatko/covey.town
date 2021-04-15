@@ -1,6 +1,6 @@
 export interface IUserAccountAuthStatus extends IUserAccountLogin {
   isLoggedIn: boolean;
-  userID: string;
+  userID: string; 
 }
 export interface IUserAccount {
   username: string;
@@ -11,6 +11,7 @@ export interface IUserAccount {
 
 export interface IUserAccountLogin extends IUserAccount {
   avatar: string;
+
 }
 
 export interface UserAccountProps {

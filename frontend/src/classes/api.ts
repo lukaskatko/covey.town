@@ -3,6 +3,7 @@ import {
   ApiDataType,
   IApiLoginDataType,
   IApiRegisterDataType,
+  IUserAccountAuthStatus,
   IUserAccount,
   IUserAccountLogin,
 } from './UserAccount';
@@ -69,6 +70,7 @@ export const updateUser = async ({
         avatar
       });
     return updatedUser;
+
   } catch (error) {
     throw new Error(error);
   }

@@ -14,7 +14,7 @@ app.use(Express.urlencoded({ extended: true }));
 
 users(app);
 
-const uri = `${process.env.MONGO_DB_URI}`
+const uri = `${process.env.MONGO_DB_URI}`;
 
 const options = { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false };
 

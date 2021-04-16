@@ -3,13 +3,12 @@ import {
   ApiDataType,
   IApiLoginDataType,
   IApiRegisterDataType,
+  IUserAccountAuthStatus,
   IUserAccount,
   IUserAccountLogin,
 } from './UserAccount';
 
-const baseUrl = process.env.MONGO_DB_URI || 'mongodb+srv://testUser:P%40123456@coveytownusers.w8gis.mongodb.net/test?authSource=admin&replicaSet=atlas-1q4y4a-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'
-
-;
+const baseUrl = 'http://localhost:4000';
 
 export const getAllUsers = async (): Promise<AxiosResponse<ApiDataType>> => {
   try {

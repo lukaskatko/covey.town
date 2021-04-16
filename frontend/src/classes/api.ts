@@ -3,7 +3,6 @@ import {
   ApiDataType,
   IApiLoginDataType,
   IApiRegisterDataType,
-  IUserAccountAuthStatus,
   IUserAccount,
   IUserAccountLogin,
 } from './UserAccount';

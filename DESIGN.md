@@ -1,3 +1,4 @@
+# DESIGN
 Below is the high-level architecture of our updated Covey.Town. Original components are in white and grey, added and modified components are in green.
 
 ![Covey.Town Architecture](docs/updated-covey-town-architecture.png)

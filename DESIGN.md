@@ -36,9 +36,9 @@ CRC cards for Avatar Selection and Display:
 | **State**: Display avatars selection menu                   |                   |
 | **Responsibilities**                                                | **Collaborators**     |
 |||
-| Showcase 6 avatars options for user  |  |
-| Get avatar name, id, image source ||
-| Store avatar name, id, image source ||
+| Showcase 6 avatars options for user  | TownSelection |
+| Get avatar name, id, image source | UserProfile |
+| Store avatar name, id, image source |  |
 
 | Class Name: WorldMap                       |                   |
 |-----------------------------------------------------------------|-------------------|

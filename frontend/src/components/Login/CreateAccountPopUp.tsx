@@ -14,7 +14,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { addUser, updateUser } from '../../classes/api';
+import { addUser } from '../../classes/api';
 
 const CreateAccountPopUp: React.FunctionComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

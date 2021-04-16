@@ -1,6 +1,5 @@
 import { Box, Center, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import useUserProfile from '../../hooks/useUserProfile';
 
 class Avatar {
   private _name: string;
@@ -43,20 +42,9 @@ interface AvatarSelectionProps {
 }
 
 export default function AvatarSelection({ setAvatarId }: AvatarSelectionProps): JSX.Element {
-  const { userProfile } = useUserProfile();
-  const getSelectedAvatar = () => {
-    if (userProfile?.avatar) {
-      const userAvatar = avatars.find(avatar =>
-        avatar.id === userProfile.avatar
-      )
-      if (userAvatar) {
-        return userAvatar;
-      }
-    }
-    return avatars[0];
-  }
-  const [selectedAvatar, setSelectedAvatar] = useState<Avatar>(getSelectedAvatar());
+  const [selectedAvatar, setSelectedAvatar] = useState<Avatar>(avatars[0]);
   useEffect(() => {
+    setSelectedAvatar(selectedAvatar);
     setAvatarId(selectedAvatar.id);
   }, [selectedAvatar, setAvatarId]);
 

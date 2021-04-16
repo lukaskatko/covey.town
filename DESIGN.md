@@ -10,7 +10,9 @@ Significant changes were made to worldmap.ts to remove the hard coded sprite ‘
 
 Modifications also needed to be made to the Player class and the Video class to support avatar continuity between local and non-local users. An avatarID field was added to both classes and gets populated through the AvatarSelection.tsx which gets displayed to the frontend through TownSelection.tsx. These avatarIDs then get passed to WorldMap.tsx to correctly display the selected avatar for all players.
 
+Below are the CRC cards related to the modifications we made. This doesn’t include all the CRC cards for the entire App, just the ones we created or modified.
 
+CRC cards for MongoDB changes:
 
 | **Class Name**: UserAccount                                         |                   |
 |-----------------------------------------------------------------|-------------------|
@@ -26,6 +28,8 @@ Modifications also needed to be made to the Player class and the Video class to 
 | **Responsibilities**                                               | **Collaborators**     |
 |||
 | indicate user account components requirement and initial setting | UserAccount |
+
+CRC cards for Avatar Selection and Display:
 
 | **Class Name**: AvatarSelection                                      |                   |
 |-----------------------------------------------------------------|-------------------|

@@ -81,6 +81,7 @@ Once the above steps have been completed, the frontend of the app is ready to ru
 
 While in the `/frontend` directory, run the `npm start` command to start the app. If everything worked correctly, then a new tab in your default browser will open and load the app.
 
+---
 
 The online deployment of this app can be found at:
 

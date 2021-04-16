@@ -1,5 +1,5 @@
 import { Box, Center, Image, SimpleGrid, Text } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useUserProfile from '../../hooks/useUserProfile';
 
 class Avatar {
@@ -44,7 +44,7 @@ interface AvatarSelectionProps {
 
 export default function AvatarSelection({ setAvatarId }: AvatarSelectionProps): JSX.Element {
   const { userProfile } = useUserProfile();
-  const getSelectedAvatar = () => {
+  const getSelectedAvatar = useCallback(() => {
     if (userProfile?.avatar) {
       const userAvatar = avatars.find(avatar =>
         avatar.id === userProfile.avatar
@@ -54,8 +54,14 @@ export default function AvatarSelection({ setAvatarId }: AvatarSelectionProps): 
       }
     }
     return avatars[0];
-  }
+  }, [userProfile])
+
   const [selectedAvatar, setSelectedAvatar] = useState<Avatar>(getSelectedAvatar());
+  
+  useEffect(() => {
+    setSelectedAvatar(getSelectedAvatar());
+  }, [getSelectedAvatar])
+  
   useEffect(() => {
     setAvatarId(selectedAvatar.id);
   }, [selectedAvatar, setAvatarId]);

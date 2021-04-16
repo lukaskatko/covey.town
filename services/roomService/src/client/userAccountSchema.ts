@@ -14,6 +14,7 @@ const userAccountSchema: Schema = new Schema(
     avatar: {
       type: String,
       required: false,
+      default: 'john'
     },
   },
   { timestamps: true },

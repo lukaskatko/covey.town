@@ -2,7 +2,7 @@
 
 Covey.Town provides a virtual meeting space where different groups of people can have simultaneous video calls, allowing participants to drift between different conversations, just like in real life.
 
-This version of Covey.Town has been modified as a final project for team 43 to allow users to select different avatars.
+This version of Covey.Town has been modified and updated as a final project for team 43 to allow users to select different avatars.
 
 The figure below depicts a very high level architecture view of Covey.Town, where white and grey elements are from the original Covey.Town and green elements were those added for the implementation of the avatar feature. A more detailed overview of the design can be found in the DESIGN.md file.
 
@@ -10,7 +10,8 @@ The figure below depicts a very high level architecture view of Covey.Town, wher
 ![Updated Covey.Town Architecture](docs/updated-covey-town-architecture.png)
 
 
-The frontend client (in the `frontend` directory of this repository) uses the [PhaserJS Game Library](https://phaser.io) to create a 2D game interface, using tilemaps and sprites.
+The frontend client (in the `frontend` directory of this repository) uses the [PhaserJS Game Library](https://phaser.io) to create a 2D game interface, using tilemaps and sprites. The classes related to phaser were modified to support the use of various avatars instead of a single default.  
+
 The frontend implements video chat using the [Twilio Programmable Video](https://www.twilio.com/docs/video) API, and that aspect of the interface relies heavily on [Twilio's React Starter App](https://github.com/twilio/twilio-video-app-react).
 
 A backend service (in the `services/roomService` directory) implements the application logic: tracking which "towns" are available to be joined, and the state of each of those towns.

@@ -68,11 +68,7 @@ export interface TownListResponse {
 export default class AccountsServiceClient {
   private _axios: AxiosInstance;
 
-  /**
-   * Construct a new Towns Service API client. Specify a serviceURL for testing, or otherwise
-   * defaults to the URL at the environmental variable REACT_APP_ROOMS_SERVICE_URL
-   * @param serviceURL
-   */
+
   constructor(serviceURL?: string) {
     const baseURL = serviceURL || process.env.REACT_APP_TOWNS_SERVICE_URL;
     assert(baseURL);

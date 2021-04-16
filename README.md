@@ -18,9 +18,11 @@ A backend service (in the `services/roomService` directory) implements the appli
 
 ## Running this app locally
 
-Running the application locally entails running both the backend service and a frontend.
+There are a few steps that need to be completed to allow the application to run locally:
 
 ### Setting up the backend
+
+#### 1. Create .env with Twilio information
 
 To run the backend, you will need a Twilio account. Twilio provides new accounts with $15 of credit, which is more than enough to get started.
 To create an account and configure your local environment:
@@ -36,20 +38,35 @@ To create an account and configure your local environment:
 | `TWILIO_API_KEY_SECRET` | The secret for the API key you created.   |
 | `TWILIO_API_AUTH_TOKEN` | Visible on your twilio account dashboard. |
 
-### Starting the backend
+#### 2. Install dependencies
 
-Once your backend is configured, you can start it by running `npm start` in the `services/roomService` directory (the first time you run it, you will also need to run `npm install`).
-The backend will automatically restart if you change any of the files in the `services/roomService/src` directory.
+If this is the first time you're running this app locally, you'll need to run `npm install` while in the `services/roomService` directory. This will install all necessary dependencies in the app.
 
-### Configuring the frontend
+If npm install has already been run, this step can be skipped.
 
-Create a `.env` file in the `frontend` directory, with the line: `REACT_APP_TOWNS_SERVICE_URL=http://localhost:8081` (if you deploy the rooms/towns service to another location, put that location here instead)
+#### 3. Start backend server
 
-### Running the frontend
+Once the above steps have been completed, the server is ready to run. While in the `services/roomService` directory, run the `npm start` command to start the server. If everything worked correctly, you should see a commandline output like: `Listening on 4000`. 
 
-In the `frontend` directory, run `npm start` (again, you'll need to run `npm install` the very first time). After several moments (or minutes, depending on the speed of your machine), a browser will open with the frontend running locally.
-The frontend will automatically re-compile and reload in your browser if you change any files in the `frontend/src` directory.
+### Setting up the frontend
 
-Heroku: https://coveytown43.herokuapp.com/
+#### 1. Create .env with local server information
 
-Netlify: https://master--inspiring-bell-3080b7.netlify.app/
+Navigate to the `/frontend` directory. Create a new `.env` file with the following line: REACT_APP_TOWNS_SERVICE_URL=http://localhost:4000
+
+This tells the frontend where to send requests to the backend and allows the frontend to communicate. without the correct SERVICE_URL, all the requests from the frontend will get rejected.
+
+#### 2. Install dependencies
+
+If this is the first time you're running this app locally, you'll need to run `npm install` while in the `/frontend` directory. This will install all necessary dependencies in the app.
+
+If npm install has already been run, this step can be skipped.
+
+#### 3. Start frontend
+
+Once the above steps have been completed, the frontend of the app is ready to run. While in the `/frontend` directory, run the `npm start` command to start the app. If everything worked correctly, then a new tab in your default browser will open and load the app.
+
+
+The online deployment of this app can be found at:
+
+https://master--inspiring-bell-3080b7.netlify.app/

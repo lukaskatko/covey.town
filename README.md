@@ -40,7 +40,7 @@ Create a `.env` file in the `services/roomService` directory, setting the values
 
 `TWILIO_API_KEY_SECRET` - Only displayed when the API key is created, during api key creation this will have been displayed with instructions to save it in a secure place
 
-#### 3. Install dependencies
+#### 2. Install dependencies
 
 If this is the first time you're running this app locally, you'll need to run `npm install` while in the `services/roomService` directory. This will install all necessary dependencies in the app.
 

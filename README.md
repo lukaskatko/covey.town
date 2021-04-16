@@ -72,7 +72,7 @@ While in the `/frontend` directory, run the `npm start` command to start the app
 
 ---
 
-The online deployment of this app can be found at: https://master--inspiring-bell-3080b7.netlify.app/
+The online deployment of this app can be found at https://master--inspiring-bell-3080b7.netlify.app/
 
-The github repository is public and can be found at: https://github.com/lukaskatko/covey.town
+The github repository is public and can be found at https://github.com/lukaskatko/covey.town
 

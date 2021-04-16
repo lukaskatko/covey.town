@@ -34,8 +34,6 @@ To create an account and configure your local environment:
 
 #### 1b. New TWILIO account instructions
 
-
-
 Create a `.env` file in the `services/roomService` directory, setting the values as follows:
 
 | Config Value            | Description                               |
@@ -44,6 +42,11 @@ Create a `.env` file in the `services/roomService` directory, setting the values
 | `TWILIO_API_KEY_SID`    | The SID of the new API key you created.   |
 | `TWILIO_API_KEY_SECRET` | The secret for the API key you created.   |
 | `TWILIO_API_AUTH_TOKEN` | Visible on your twilio account dashboard. |
+
+`TWILIO_ACCOUNT_SID` - found directly on user dashboard
+`TWILIO_API_AUTH_TOKEN` - found directly on user dashboard
+`TWILIO_API_KEY_SID` - found under 'settings' -> 'API keys'
+`TWILIO_API_KEY_SECRET` - Only displayed when the API key is created, during api key creation this will have been displayed with instructions to save it in a secure place
 
 
 #### 2. Install dependencies

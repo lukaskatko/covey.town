@@ -8,7 +8,7 @@ import {
   IUserAccountLogin,
 } from './UserAccount';
 
-const baseUrl = 'http://localhost:4000';
+const baseUrl = 'https://coveytown43.herokuapp.com/';
 
 export const getAllUsers = async (): Promise<AxiosResponse<ApiDataType>> => {
   try {

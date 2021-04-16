@@ -65,7 +65,7 @@ const CreateAccountPopUp: React.FunctionComponent = () => {
     } catch (err) {
       toast({
         title: 'Unable to create account with entered info',
-        description: 'Username already exists',
+        description: 'Unable to create account',
         status: 'error',
       });
     }

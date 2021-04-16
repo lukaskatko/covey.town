@@ -57,7 +57,7 @@ While in the `services/roomService` directory, run the `npm start` command to st
 
 #### 1. Create .env with local server information
 
-Navigate to the `/frontend` directory. Create a new `.env` file with the following line: REACT_APP_TOWNS_SERVICE_URL=http://localhost:4000
+Navigate to the `/frontend` directory. Create a new `.env` file with the following line: `REACT_APP_TOWNS_SERVICE_URL=http://localhost:4000`
 
 This tells the frontend where to send requests to the backend and allows the frontend to communicate. Without the correct SERVICE_URL, all the requests from the frontend will be rejected.
 

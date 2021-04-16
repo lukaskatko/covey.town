@@ -256,7 +256,7 @@ export default function TownSelection({ doLogin }: TownSelectionProps): JSX.Elem
                   <Heading as='h2' size='lg'>
                     Single click guest
                   </Heading>
-                  <p>Join the bussiest available room. We will select your username and avatar</p>
+                  <p>Join the busiest available room. We will select your username and avatar</p>
                   <Button width='200px' data-testid='quickJoin' onClick={() => handleQuickJoin()}>
                     Quick join!
                   </Button>

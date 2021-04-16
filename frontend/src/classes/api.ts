@@ -8,7 +8,7 @@ import {
   IUserAccountLogin,
 } from './UserAccount';
 
-const baseUrl = 'https://coveytown43.herokuapp.com/';
+const baseUrl = process.env.REACT_APP_TOWNS_SERVICE_URL;
 
 export const getAllUsers = async (): Promise<AxiosResponse<ApiDataType>> => {
   try {

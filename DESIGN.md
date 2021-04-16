@@ -3,7 +3,7 @@ Below is the high-level architecture of our updated Covey.Town. Original compone
 ![Covey.Town Architecture](docs/updated-covey-town-architecture.png)
 
 
-We Created user account objects on the server side and stored them using MongoDB with data such as: avatarID, username, password, and object ID. We followed the CRUD operation and model, creating the ability to retrieve the users list, specific user, delete user, add user, and update user from the backend, and also using as the communication tool for the front end to the backend. Added additional RESTful API to be able to retrieve and pass user accounts as objects from the backend to the front end. 
+We created user account objects on the server side and stored them using MongoDB with data such as: avatarID, username, password, and object ID. We followed the CRUD operation and model, creating the ability to retrieve the users list, specific user, delete user, add user, and update user from the backend, and also using as the communication tool for the front end to the backend. Added additional RESTful API to be able to retrieve and pass user accounts as objects from the backend to the front end. 
 
 Significant changes were made to worldmap.ts to remove the hard coded sprite ‘misa’ and replace all references to ‘misa’ with generic variables that are pulled from players and vdeo objects. Multiple new assets were added to the public/assets folder under ‘sprites’ which we modified worldmap.ts to pull sprite data from. For each sprite asset we generated a new .json file to define the individual frames that Phaser could use to generate animations. The animation generation process was modified to run as a loop over all available avatars to generate their animations instead of being hardcoded.
 

@@ -1,5 +1,10 @@
 # Covey.Town
 
+Covey.Town provides a virtual meeting space where different groups of people can have simultaneous video calls, allowing participants to drift between different conversations, just like in real life.
+
+This version of Covey.Town has been modified and updated as a final project for team 43 to allow users to select different avatars.
+
+
 ## Running this app locally
 
 There are a few steps that need to be completed to allow the application to run locally:

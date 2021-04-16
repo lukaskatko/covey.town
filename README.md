@@ -22,14 +22,21 @@ There are a few steps that need to be completed to allow the application to run 
 
 ### Setting up the backend
 
-#### 1. Create .env with Twilio information
+#### 1a. New TWILIO account instructions
+
+Below are instructions for users who need to create a new TWILIO account. If you have a TWILIO account, skip to 1b.
 
 To run the backend, you will need a Twilio account. Twilio provides new accounts with $15 of credit, which is more than enough to get started.
 To create an account and configure your local environment:
 
 1. Go to [Twilio](https://www.twilio.com/) and create an account. You do not need to provide a credit card to create a trial account.
 2. Create an API key and secret (select "API Keys" on the left under "Settings")
-3. Create a `.env` file in the `services/roomService` directory, setting the values as follows:
+
+#### 1b. New TWILIO account instructions
+
+
+
+Create a `.env` file in the `services/roomService` directory, setting the values as follows:
 
 | Config Value            | Description                               |
 | ----------------------- | ----------------------------------------- |
@@ -37,6 +44,7 @@ To create an account and configure your local environment:
 | `TWILIO_API_KEY_SID`    | The SID of the new API key you created.   |
 | `TWILIO_API_KEY_SECRET` | The secret for the API key you created.   |
 | `TWILIO_API_AUTH_TOKEN` | Visible on your twilio account dashboard. |
+
 
 #### 2. Install dependencies
 
